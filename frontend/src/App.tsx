@@ -1,35 +1,55 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Routes, Route, Link } from 'react-router-dom';
+import Layout from './components/Layout';
+import EntertainersPage from './pages/EntertainersPage';
+import EntertainerDetails from './pages/EntertainerDetails';
+import AddEntertainer from './pages/AddEntertainer';
+import EditEntertainer from './pages/EditEntertainer';
+import EntertainerStats from './pages/EntertainerStats';
+import cartmanImg from './assets/cartman.jpg'; // ✅ Import image
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route
+          index
+          element={
+            <div style={{ textAlign: 'center', marginTop: '4rem' }}>
+              <h2 style={{ marginBottom: '2rem' }}>Welcome to the Entertainment Agency, your one stop shop for all Entertainment!</h2>
+
+              {/* ✅ Cartman Image */}
+              <img
+                src={cartmanImg}
+                alt="Cartman"
+                style={{
+                  maxWidth: '300px',
+                  height: 'auto',
+                  borderRadius: '8px',
+                  marginBottom: '2rem',
+                }}
+              />
+
+              <div style={{ display: 'flex', justifyContent: 'center', gap: '20px' }}>
+                <Link to="/entertainers" className="btn btn-primary">View Entertainers</Link>
+                <Link to="/entertainer-stats" className="btn btn-outline-info">Booking Stats</Link>
+              </div>
+            </div>
+          }
+        />
+        <Route path="entertainers" element={<EntertainersPage />} />
+        <Route path="entertainers/:id" element={<EntertainerDetails />} />
+        <Route path="add-entertainer" element={<AddEntertainer />} />
+        <Route path="edit-entertainer/:id" element={<EditEntertainer />} />
+        <Route path="entertainer-stats" element={<EntertainerStats />} />
+      </Route>
+    </Routes>
+  );
 }
 
-export default App
+export default App;
+
+
+
+
+
+

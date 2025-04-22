@@ -70,5 +70,31 @@ namespace final.API.Controllers
 
             return NoContent();
         }
+        
+        [HttpGet("with-bookings")]
+        public async Task<ActionResult<IEnumerable<EntertainerBookingStats>>> GetEntertainersWithBookings()
+        {
+            var stats = await _context.Entertainers
+                .Include(e => e.Engagements)
+                .AsNoTracking() // Optional: improves read performance
+                .ToListAsync(); // Do the database fetch FIRST
+
+            // Now safely project using DateOnly in C#
+            var result = stats.Select(e => new EntertainerBookingStats
+            {
+                EntertainerId = e.EntertainerId,
+                EntStageName = e.EntStageName ?? "",
+                BookingCount = e.Engagements.Count,
+                LastBookingDate = e.Engagements
+                    .OrderByDescending(eng => eng.StartDate)
+                    .FirstOrDefault()?.StartDate
+
+            }).ToList();
+
+            return result;
+        }
+
+
+
     }
 }

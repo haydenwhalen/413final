@@ -75,7 +75,7 @@ public partial class EntertainmentAgencyExampleContext : DbContext
         {
             entity.Property(e => e.EntertainerId).HasColumnName("EntertainerID");
             entity.Property(e => e.EntEmailAddress).HasColumnName("EntEMailAddress");
-            entity.Property(e => e.EntSsn).HasColumnName("EntSSN");
+            entity.Property(e => e.EntSSN).HasColumnName("EntSSN");
         });
 
         modelBuilder.Entity<EntertainerMember>(entity =>

@@ -9,7 +9,7 @@ public partial class Entertainer
 
     public string? EntStageName { get; set; }
 
-    public string? EntSsn { get; set; }
+    public string? EntSSN { get; set; }
 
     public string? EntStreetAddress { get; set; }
 
@@ -26,4 +26,7 @@ public partial class Entertainer
     public string? EntEmailAddress { get; set; }
 
     public DateOnly? DateEntered { get; set; }
+    
+    public virtual ICollection<Engagement> Engagements { get; set; } = new List<Engagement>();
+
 }

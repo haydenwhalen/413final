@@ -156,3 +156,4 @@
 /Users/haydenwhalen/Desktop/final/backend/final.API/obj/Debug/net8.0/final.API.pdb
 /Users/haydenwhalen/Desktop/final/backend/final.API/obj/Debug/net8.0/final.API.genruntimeconfig.cache
 /Users/haydenwhalen/Desktop/final/backend/final.API/obj/Debug/net8.0/ref/final.API.dll
+/Users/haydenwhalen/Desktop/final/backend/final.API/obj/Debug/net8.0/final.API.sourcelink.json
